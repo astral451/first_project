@@ -13,6 +13,12 @@
 		android:id="@+id/button_01"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="@string/btn_string"
+		android:text="@string/btn_string" />
+		
+	<ImageButton
+		android:id="@+id/image_button_01"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/android_button"
 		/>
 </LinearLayout>

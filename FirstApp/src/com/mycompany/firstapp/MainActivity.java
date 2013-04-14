@@ -12,7 +12,7 @@ public class MainActivity extends Activity
 {
 
 	Button button;
-	
+	ImageButton image_button;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -26,7 +26,6 @@ public class MainActivity extends Activity
 	public void addListenerOnButton( ){
 		
 		button = (Button) findViewById( R.id.button_01 );
-		
 		button.setOnClickListener( new OnClickListener() {
 			
 			@Override
@@ -37,6 +36,23 @@ public class MainActivity extends Activity
 				startActivity( browserIntent );
 			}
 		} );
+	
+		image_button = (ImageButton) findViewById( R.id.image_button_01 );
+		image_button.setOnClickListener( new_listener );
 		
 	}
+	
+	View.OnClickListener new_listener =  new OnClickListener( ) {
+	
+		@Override
+		public void onClick( View arg0 ) {
+			Toast.makeText( MainActivity.this, "Image button is clicked", Toast.LENGTH_SHORT ).show( );
+			
+			
+		}
+		
+	
+	
+	
+	};
 }
