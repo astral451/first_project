@@ -3,5 +3,6 @@
 
     <string name="hello">Hello World, MainActivity!</string>
     <string name="app_name">FirstApp</string>
-
+	<string name="btn_string">A Button</string>
+	
 </resources>
