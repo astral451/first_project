@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.content.Intent;
 import android.view.View.OnClickListener;
 
-public class MainActivity extends Activity
+public class First_App_Activity extends Activity
 {
 
 	Button button;
@@ -46,7 +46,7 @@ public class MainActivity extends Activity
 	
 		@Override
 		public void onClick( View arg0 ) {
-			Toast.makeText( MainActivity.this, "Image button is clicked", Toast.LENGTH_SHORT ).show( );
+			Toast.makeText( First_App_Activity.this, "Image button is clicked", Toast.LENGTH_SHORT ).show( );
 			
 			
 		}
