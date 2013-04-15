@@ -22,21 +22,12 @@ public class First_App_Activity extends Activity
         setContentView(R.layout.main);
 
 		addListenerOnButton();
-    }
+    };
 	
 	public void addListenerOnButton( ){
 		
 		button = (Button) findViewById( R.id.button_01 );
-		button.setOnClickListener( new OnClickListener() {
-			
-			@Override
-			public void onClick( View arg0 ) {
-				
-				Intent browserIntent = 
-					new Intent( Intent.ACTION_VIEW, Uri.parse("http://www.mkyong.com" ) );
-				startActivity( browserIntent );
-			}
-		} );
+		button.setOnClickListener( first_listener );
 	
 		image_button = (ImageButton) findViewById( R.id.image_button_01 );
 		image_button.setOnClickListener( new_listener );
@@ -44,7 +35,20 @@ public class First_App_Activity extends Activity
 		new_button = ( Button ) findViewById( R.id.button_02 );
 		
 		
-	}
+	};
+	
+	View.OnClickListener first_listener = new OnClickListener() {
+
+		@Override
+		public void onClick( View arg0 ) {
+
+			Intent browserIntent = 
+				new Intent( Intent.ACTION_VIEW, Uri.parse("http://www.mkyong.com" ) );
+			startActivity( browserIntent );
+		}	
+	}; 
+	
+	
 	
 	View.OnClickListener new_listener =  new OnClickListener( ) {
 	
