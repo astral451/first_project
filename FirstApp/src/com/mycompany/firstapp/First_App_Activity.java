@@ -13,7 +13,8 @@ public class First_App_Activity extends Activity
 
 	Button button;
 	ImageButton image_button;
-    /** Called when the activity is first created. */
+    Button new_button;
+	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
 	{
@@ -40,6 +41,9 @@ public class First_App_Activity extends Activity
 		image_button = (ImageButton) findViewById( R.id.image_button_01 );
 		image_button.setOnClickListener( new_listener );
 		
+		new_button = ( Button ) findViewById( R.id.button_02 );
+		
+		
 	}
 	
 	View.OnClickListener new_listener =  new OnClickListener( ) {
@@ -47,7 +51,7 @@ public class First_App_Activity extends Activity
 		@Override
 		public void onClick( View arg0 ) {
 			Toast.makeText( First_App_Activity.this, "Image button is clicked", Toast.LENGTH_SHORT ).show( );
-			
+			int x = 1;
 			
 		}
 		
