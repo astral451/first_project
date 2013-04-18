@@ -8,12 +8,17 @@ import android.net.Uri;
 import android.content.Intent;
 import android.view.View.OnClickListener;
 
+
+
 public class First_App_Activity extends Activity
 {
 
 	Button button;
 	ImageButton image_button;
     Button new_button;
+	//public Intent new_intent;
+	
+	
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -24,15 +29,20 @@ public class First_App_Activity extends Activity
 		addListenerOnButton();
     };
 	
+	public void sendMessage( View view )
+	{
+		Intent new_intent = new Intent( this, Second_Activity.class);
+		startActivity( new_intent );
+	};
 	public void addListenerOnButton( ){
 		
 		button = (Button) findViewById( R.id.button_01 );
 		button.setOnClickListener( first_listener );
 	
-		image_button = (ImageButton) findViewById( R.id.image_button_01 );
+		image_button = (ImageButton) findViewById( R.id.image_button_03 );
 		image_button.setOnClickListener( new_listener );
 		
-		new_button = ( Button ) findViewById( R.id.button_02 );
+		//new_button = ( Button ) findViewById( R.id.button_02 );
 		
 		
 	};
