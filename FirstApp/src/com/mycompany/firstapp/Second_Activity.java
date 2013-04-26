@@ -24,6 +24,7 @@ public class Second_Activity extends Activity
 		super.onCreate( savedInstanceState );
 		setContentView( R.layout.second );
 		
+		connect_interfaces();
 		add_key_listener();
 		add_check_listener( );
 		add_button_listener( );
@@ -35,10 +36,16 @@ public class Second_Activity extends Activity
 		@Override
 		public void onClick( View v )
 		{
+			boolean ios = chkIos.isChecked( );
+			boolean and = chkAndroid.isChecked( );
+			boolean win = chkWindows.isChecked( );
+			
 			StringBuffer result = new StringBuffer( );
-			result.append( "IPhone check :  ").append( chkIos.isChecked( ) );
-			result.append( "\nAndroid check : "); //.append( chkAndroid.isChecked( ) );
-			result.append( "\nWindows check : "); //.append( chkWindows.isChecked( ) );
+			result.append( "IPhone check :  ").append( ios );
+			result.append( "\nAndroid check : ").append( and );
+			result.append( "\nWindows check : ").append( win );
+			
+			//Print it out
 			Toast.makeText( Second_Activity.this, result.toString(),Toast.LENGTH_LONG ).show( );
 			
 		}
@@ -87,25 +94,29 @@ public class Second_Activity extends Activity
 		
 		
 	};
+	public void connect_interfaces( )
+	{
+		chkIos = ( CheckBox ) findViewById( R.id.chkIos );
+		chkAndroid = ( CheckBox ) findViewById( R.id.chkAndroid );
+		chkWindows = ( CheckBox ) findViewById( R.id.chkWindows );
+		
+		edit_text = ( EditText ) findViewById( R.id.act_02_et );
+		btnDisplay = ( Button ) findViewById( R.id.btnDisplay );
+		
+	}
 	
 	public void add_check_listener( )
 	{
-		chkIos = ( CheckBox ) findViewById( R.id.chkIos );
 		chkIos.setOnClickListener( check_box_listener ); 
-		
 	}	
 	
 	public void add_key_listener( )
 	{
-		//get edittext component
-		edit_text = (EditText) findViewById( R.id.act_02_et );
 		edit_text.setOnKeyListener( key_listener );
-
 	}
 	
 	public void add_button_listener( )
 	{
-		btnDisplay =( Button ) findViewById( R.id.btnDisplay );
 		btnDisplay.setOnClickListener( button_listener );		
 	}
 }
