@@ -5,9 +5,10 @@
     <string name="app_name">FirstApp</string>
 	<string name="button_01">Web Browser</string>
 	<string name="button_02">Second Activity</string>
+	<string name="third_act_button">Go to 3rd</string>
 	<string name="second_activity">A Second Activity</string>
 	<string name="third_activity">A Set of widgets</string>
-
+	<string name="third_radio">Radio selection</string>
 	<string name="chk_ios">IPhone</string>
 	<string name="chk_android">Android</string>
 	<string name="chk_windows">Windows</string>

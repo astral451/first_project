@@ -20,11 +20,19 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:text="@string/button_02"
-		android:onClick="sendMessage" />
+		android:onClick="go_to_second_activity" />
 	<ImageButton
 		android:id="@+id/image_button_03"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:src="@drawable/android_button"
 		/>
+		
+	<Button
+		android:id="@+id/third_act_button"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/third_act_button"
+		/>
+		
 </LinearLayout>
