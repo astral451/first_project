@@ -6,6 +6,7 @@
 	<string name="button_01">Web Browser</string>
 	<string name="button_02">Second Activity</string>
 	<string name="second_activity">A Second Activity</string>
+	<string name="third_activity">A Set of widgets</string>
 
 	<string name="chk_ios">IPhone</string>
 	<string name="chk_android">Android</string>
