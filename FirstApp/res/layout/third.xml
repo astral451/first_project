@@ -9,5 +9,41 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		/>
+
+	<RadioGroup
+		android:id="@+id/radioSex"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" >
+		
+		<RadioButton
+			android:id="@+id/radioMale"
+			android:text="@string/radio_male"
+			android:checked="True"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			/>
+			
+		<RadioButton
+			android:id="@+id/radioFamale"
+			android:text="@string/radio_female"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			/>
+			
+		<RadioButton
+			android:id="@+id/radioOther"
+			android:text="@string/radio_other"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			/>
+	</RadioGroup>
 	
+	<Button
+		android:id="@+id/thirdActButton"
+		android:text="@string/gender_display"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+	/>
+	
+		
 </LinearLayout>
