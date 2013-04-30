@@ -34,12 +34,27 @@ public class Third_Activity extends Activity
 		radio_sex_group = ( RadioGroup ) findViewById( R.id.radioSex );
 		btn_display = ( Button ) findViewById( R.id.thirdActButton );
 		
-		radio_sex_group.setOnClickListener( sex_listener );
+		radio_sex_group.setOnCheckedChangeListener( sex_group_listener );
 		btn_display.setOnClickListener( sex_listener );	
 	
 	};
 	
-	
+	RadioGroup.OnCheckedChangeListener sex_group_listener = new RadioGroup.OnCheckedChangeListener( )
+	{
+		
+		@Override
+		public void onCheckedChanged( RadioGroup r, int id )
+		{
+			if ( id == R.id.radioOther )
+			{
+				
+				Toast.makeText( Third_Activity.this, "test on changed", Toast.LENGTH_SHORT ).show( );
+				
+			}
+			
+		}
+		
+	};
 	
 	View.OnClickListener sex_listener = new View.OnClickListener( )
 	{
@@ -65,8 +80,6 @@ public class Third_Activity extends Activity
 			result.append( "You have choosen:" );
 			result.append( radio_sex_button.getText( ) );
 			Toast.makeText( Third_Activity.this, result.toString() ,Toast.LENGTH_SHORT ).show( );
-				
-			
 			
 		}
 	
