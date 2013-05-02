@@ -45,5 +45,13 @@
 		android:layout_height="wrap_content"
 	/>
 	
+	<ToggleButton
+		android:id="@+id/thirdActToggleButton"
+		android:textOn="@string/third_act_toggle_on"
+		android:textOff="@string/third_act_toggle_off"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+	/>
+	
 		
 </LinearLayout>

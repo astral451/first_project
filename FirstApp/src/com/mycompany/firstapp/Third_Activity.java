@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Button;
+import android.widget.ToggleButton;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,7 +18,7 @@ public class Third_Activity extends Activity
 	private RadioGroup radio_sex_group;
 	private RadioButton radio_sex_button;
 	private Button btn_display;
-	
+	private ToggleButton btn_toggle;
 	
 	
 	@Override
@@ -33,9 +34,12 @@ public class Third_Activity extends Activity
 	{
 		radio_sex_group = ( RadioGroup ) findViewById( R.id.radioSex );
 		btn_display = ( Button ) findViewById( R.id.thirdActButton );
+		btn_toggle = ( ToggleButton ) findViewById( R.id.thirdActToggleButton );
 		
 		radio_sex_group.setOnCheckedChangeListener( sex_group_listener );
 		btn_display.setOnClickListener( sex_listener );	
+	
+		
 	
 	};
 	
