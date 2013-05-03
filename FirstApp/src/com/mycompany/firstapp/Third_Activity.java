@@ -57,7 +57,7 @@ public class Third_Activity extends Activity
 			}
 		
 		} );
-		sound_id = sound_pool.load( this, R.raw.a01, 1 );
+		sound_id = sound_pool.load( this, R.raw.b01, 1 );
 		
 		
 	};
