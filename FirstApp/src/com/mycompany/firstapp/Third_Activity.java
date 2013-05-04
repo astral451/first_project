@@ -13,6 +13,11 @@ import android.widget.Toast;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
+import java.util.prefs.Preferences;
+import android.content.*;
+
+// preferences
+
 
 
 
@@ -40,6 +45,7 @@ public class Third_Activity extends Activity
 		
 		register_controls( );
 		register_audio( );
+		
 	}
 	
 	
@@ -72,7 +78,13 @@ public class Third_Activity extends Activity
 		radio_sex_group.setOnCheckedChangeListener( sex_group_listener );
 		btn_display.setOnClickListener( sex_listener );	
 		play_audio.setOnClickListener( audio_button_listener );
+		btn_toggle.setOnClickListener( toggle_button_listener );
 		
+		SharedPreferences prefs = getPreferences( 0 );
+
+		boolean toggle_state = prefs.getBoolean( "toggle", true );
+
+		btn_toggle.setChecked( toggle_state );		
 	
 	};
 	
@@ -92,6 +104,24 @@ public class Third_Activity extends Activity
 		}
 		
 	};
+
+	View.OnClickListener toggle_button_listener = new View.OnClickListener( )
+	{
+		
+		@Override
+		public void onClick( View v )
+		{
+			
+			boolean state = btn_toggle.isChecked( );
+			// I guess I need to Cast it?  No idea why
+			SharedPreferences prefs = getPreferences( 0 );			
+			SharedPreferences.Editor editor = prefs.edit( );
+			
+			editor.putBoolean( "toggle", state );
+			editor.commit();
+		}
+	};
+	
 	
 	View.OnClickListener audio_button_listener = new View.OnClickListener( )
 	{
