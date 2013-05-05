@@ -34,7 +34,9 @@ public class Third_Activity extends Activity
 	// Audio
 	private SoundPool sound_pool;
 	private int sound_id;
-	boolean sound_loaded = false;	
+	private boolean sound_playing = false;
+	boolean sound_loaded = false;
+		
 	
 	
 	@Override
@@ -63,8 +65,8 @@ public class Third_Activity extends Activity
 			}
 		
 		} );
-		sound_id = sound_pool.load( this, R.raw.b01, 1 );
 		
+		sound_id = sound_pool.load( this, R.raw.b01, 1 );
 		
 	};
 	
@@ -137,9 +139,10 @@ public class Third_Activity extends Activity
 			
 			float volume = actual_volume / max_volumne;
 			
-			if ( sound_loaded ) 
+			boolean sound_playing = audio_manager.isMusicActive( );// AudioManager.STREAM_MUSIC );
+			
+			if ( sound_loaded  &&  !sound_playing )
 			{
-				
 				sound_pool.play( sound_id, volume, volume, 1, 0, 1f );
 				
 			}
