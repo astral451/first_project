@@ -33,7 +33,8 @@
             android:label="@string/third_activity"
             android:name=".Third_Activity" 
 			android:parentActivityName="com.mycompany.firstapp.First_App_Activity" >
-            <meta-data
+            
+			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
 				android:value="com.mycompany.firstapp.First_App_Activity"
 			/>

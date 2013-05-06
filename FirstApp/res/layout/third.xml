@@ -45,12 +45,19 @@
 		android:layout_height="wrap_content"
 	/>
 
-	<Button
-		android:id="@+id/play_audio_button"
-		android:text="@string/play_audio"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-	/>
+		<Button
+			android:id="@+id/play_letter_a"
+			android:text="@string/btn_a"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+		/>
+		
+		<Button
+			android:id="@+id/play_letter_b"
+			android:text="@string/btn_b"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+		/>
 	
 	<ToggleButton
 		android:id="@+id/thirdActToggleButton"

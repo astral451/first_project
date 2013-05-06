@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ToggleButton;
 import android.view.View;
 import android.widget.Toast;
+import java.util.HashMap;
 
 // sound stuff
 import android.media.AudioManager;
@@ -15,6 +16,7 @@ import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
 import java.util.prefs.Preferences;
 import android.content.*;
+import com.mycompany.firstapp.Audio_Data;
 
 // preferences
 
@@ -28,15 +30,16 @@ public class Third_Activity extends Activity
 	private RadioGroup radio_sex_group;
 	private RadioButton radio_sex_button;
 	private Button btn_display;
-	private Button play_audio;
+	private Button play_a;
+	private Button play_b;
 	private ToggleButton btn_toggle;
 
 	// Audio
 	private SoundPool sound_pool;
 	private int sound_id;
-	private boolean sound_playing = false;
 	boolean sound_loaded = false;
 		
+	private Audio_Data audio_data = new Audio_Data( );
 	
 	
 	@Override
@@ -66,6 +69,7 @@ public class Third_Activity extends Activity
 		
 		} );
 		
+		sound_id = sound_pool.load( this, R.raw.a01, 1 );
 		sound_id = sound_pool.load( this, R.raw.b01, 1 );
 		
 	};
@@ -74,12 +78,15 @@ public class Third_Activity extends Activity
 	{
 		radio_sex_group = ( RadioGroup ) findViewById( R.id.radioSex );
 		btn_display = ( Button ) findViewById( R.id.thirdActButton );
-		play_audio = ( Button ) findViewById( R.id.play_audio_button );
+		play_a = ( Button ) findViewById( R.id.play_letter_a );
+		play_b = ( Button ) findViewById( R.id.play_letter_b );
+		
 		btn_toggle = ( ToggleButton ) findViewById( R.id.thirdActToggleButton );
 		
 		radio_sex_group.setOnCheckedChangeListener( sex_group_listener );
 		btn_display.setOnClickListener( sex_listener );	
-		play_audio.setOnClickListener( audio_button_listener );
+		play_a.setOnClickListener( audio_button_listener );
+		play_b.setOnClickListener( audio_button_listener );
 		btn_toggle.setOnClickListener( toggle_button_listener );
 		
 		SharedPreferences prefs = getPreferences( 0 );
@@ -115,7 +122,6 @@ public class Third_Activity extends Activity
 		{
 			
 			boolean state = btn_toggle.isChecked( );
-			// I guess I need to Cast it?  No idea why
 			SharedPreferences prefs = getPreferences( 0 );			
 			SharedPreferences.Editor editor = prefs.edit( );
 			
@@ -139,12 +145,14 @@ public class Third_Activity extends Activity
 			
 			float volume = actual_volume / max_volumne;
 			
-			boolean sound_playing = audio_manager.isMusicActive( );// AudioManager.STREAM_MUSIC );
+			int id = v.getId();
 			
-			if ( sound_loaded  &&  !sound_playing )
+			sound_id = audio_data.get( id );
+			
+			// is the sound loaded and nothing is playing.
+			if ( sound_loaded  &&  !audio_manager.isMusicActive() )
 			{
 				sound_pool.play( sound_id, volume, volume, 1, 0, 1f );
-				
 			}
 			
 		}

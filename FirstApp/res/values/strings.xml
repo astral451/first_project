@@ -21,5 +21,6 @@
 	<string name="gender_display">Display Gender</string>
 	<string name="third_act_toggle_on">Toggle On</string>
 	<string name="third_act_toggle_off">Toggle Off</string>
-	<string name="play_audio">Play audio</string>
+	<string name="btn_a">A</string>
+	<string name="btn_b">B</string>
 </resources>
