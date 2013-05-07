@@ -1,11 +1,13 @@
 package com.mycompany.firstapp;
 
+import android.util.TimeUtils;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Button;
 import android.widget.ToggleButton;
+import android.widget.TextView;
 import android.view.View;
 import android.widget.Toast;
 import java.util.HashMap;
@@ -26,7 +28,7 @@ import com.mycompany.firstapp.Audio_Data;
 public class Third_Activity extends Activity
 {
 
-
+	private TextView text_view;
 	private RadioGroup radio_sex_group;
 	private RadioButton radio_sex_button;
 	private Button btn_display;
@@ -39,7 +41,10 @@ public class Third_Activity extends Activity
 	private int sound_id;
 	boolean sound_loaded = false;
 		
-	private Audio_Data audio_data = new Audio_Data( );
+	//private Audio_Data audio_data = new Audio_Data( );
+	
+	private HashMap audio_data;// = new HashMap( );
+
 	
 	
 	@Override
@@ -50,9 +55,21 @@ public class Third_Activity extends Activity
 		
 		register_controls( );
 		register_audio( );
+		register_audio_data();
 		
 	}
 	
+	public void register_audio_data( )
+	{
+		
+		audio_data = new HashMap<Integer, Integer> ( );
+		
+		sound_id = sound_pool.load( this, R.raw.a01, 1 );
+		audio_data.put( R.id.play_letter_a, R.raw.a01 );
+		sound_id = sound_pool.load( this, R.raw.b01, 1 );
+		audio_data.put( R.id.play_letter_b, R.raw.b01 );
+		
+	}
 	
 	public void register_audio( )
 	{
@@ -69,15 +86,18 @@ public class Third_Activity extends Activity
 		
 		} );
 		
-		sound_id = sound_pool.load( this, R.raw.a01, 1 );
-		sound_id = sound_pool.load( this, R.raw.b01, 1 );
-		
 	};
 	
 	public void register_controls( )
 	{
+		// a log view
+		text_view = ( TextView ) findViewById( R.id.log );
+		
+		// examples of grouped controls
 		radio_sex_group = ( RadioGroup ) findViewById( R.id.radioSex );
 		btn_display = ( Button ) findViewById( R.id.thirdActButton );
+		
+		// audio button
 		play_a = ( Button ) findViewById( R.id.play_letter_a );
 		play_b = ( Button ) findViewById( R.id.play_letter_b );
 		
@@ -97,6 +117,7 @@ public class Third_Activity extends Activity
 	
 	};
 	
+	
 	RadioGroup.OnCheckedChangeListener sex_group_listener = new RadioGroup.OnCheckedChangeListener( )
 	{
 		
@@ -114,6 +135,7 @@ public class Third_Activity extends Activity
 		
 	};
 
+	
 	View.OnClickListener toggle_button_listener = new View.OnClickListener( )
 	{
 		
@@ -147,11 +169,24 @@ public class Third_Activity extends Activity
 			
 			int id = v.getId();
 			
-			sound_id = audio_data.get( id );
-			
+			//sound_id = audio_data.get( id );
+			sound_id = (Integer ) audio_data.get( id );
+			text_view.setText( sound_id );
 			// is the sound loaded and nothing is playing.
 			if ( sound_loaded  &&  !audio_manager.isMusicActive() )
 			{
+	
+				text_view.setText( sound_id );
+				try
+				{
+					Thread.sleep( 1000 );	
+				} catch ( InterruptedException ex ) {
+					
+					Thread.currentThread( ).interrupt( );
+				}
+				
+				
+	
 				sound_pool.play( sound_id, volume, volume, 1, 0, 1f );
 			}
 			
