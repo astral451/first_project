@@ -101,6 +101,8 @@ public class Third_Activity extends Activity
 		// a log view
 		log = ( Log_View ) findViewById( R.id.log );
 		log.setMovementMethod( new ScrollingMovementMethod( ) );
+		log.set_auto_scroll( true );
+		
 		// examples of grouped controls
 		radio_sex_group = ( RadioGroup ) findViewById( R.id.radioSex );
 		btn_display = ( Button ) findViewById( R.id.thirdActButton );

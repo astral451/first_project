@@ -8,6 +8,8 @@ import android.util.*;
 public class Log_View extends TextView
 {
 
+	private boolean auto_scroll;
+	
 	// finishing adding Log_View constructor on the phone
 	public Log_View( Context context )
 	{
@@ -51,6 +53,11 @@ public class Log_View extends TextView
 		
 	}
 
+	public void set_auto_scroll( boolean scroll )
+	{
+		
+		auto_scroll = scroll;
+	}
 	
 	public void append_text( String str )
 	{
@@ -59,6 +66,13 @@ public class Log_View extends TextView
 		current_text += "\n";
 		current_text += str;
 		this.setText( current_text );
+		
+		if( auto_scroll )
+		{
+			int current_count = this.getLineCount();
+			this.setScrollY( current_count * this.getLineHeight() - this.getHeight() );	
+		}
+		
 		
 	}
 }
