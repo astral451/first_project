@@ -20,6 +20,9 @@ import java.util.prefs.Preferences;
 import android.content.*;
 import com.mycompany.firstapp.Audio_Data;
 
+import com.mycompany.firstapp.Log_View;
+import android.text.method.*;
+
 // preferences
 
 
@@ -28,7 +31,7 @@ import com.mycompany.firstapp.Audio_Data;
 public class Third_Activity extends Activity
 {
 
-	private TextView text_view;
+	private Log_View log;
 	private RadioGroup radio_sex_group;
 	private RadioButton radio_sex_button;
 	private Button btn_display;
@@ -65,9 +68,9 @@ public class Third_Activity extends Activity
 		audio_data = new HashMap<Integer, Integer> ( );
 		
 		sound_id = sound_pool.load( this, R.raw.a01, 1 );
-		audio_data.put( R.id.play_letter_a, R.raw.a01 );
+		audio_data.put( R.id.play_letter_a, sound_id );
 		sound_id = sound_pool.load( this, R.raw.b01, 1 );
-		audio_data.put( R.id.play_letter_b, R.raw.b01 );
+		audio_data.put( R.id.play_letter_b, sound_id );
 		
 	}
 	
@@ -81,6 +84,11 @@ public class Third_Activity extends Activity
 			@Override
 			public void onLoadComplete( SoundPool sound_pool, int sampleId, int status )
 			{
+				
+				String text;
+				text = "id : %s";
+				text = text.format( Integer.toString( sampleId ) );
+				log.append_text( text );
 				sound_loaded = true;
 			}
 		
@@ -91,8 +99,8 @@ public class Third_Activity extends Activity
 	public void register_controls( )
 	{
 		// a log view
-		text_view = ( TextView ) findViewById( R.id.log );
-		
+		log = ( Log_View ) findViewById( R.id.log );
+		log.setMovementMethod( new ScrollingMovementMethod( ) );
 		// examples of grouped controls
 		radio_sex_group = ( RadioGroup ) findViewById( R.id.radioSex );
 		btn_display = ( Button ) findViewById( R.id.thirdActButton );
@@ -170,23 +178,15 @@ public class Third_Activity extends Activity
 			int id = v.getId();
 			
 			//sound_id = audio_data.get( id );
-			sound_id = (Integer ) audio_data.get( id );
-			text_view.setText( sound_id );
+			sound_id = (Integer) audio_data.get( id );
+						
 			// is the sound loaded and nothing is playing.
 			if ( sound_loaded  &&  !audio_manager.isMusicActive() )
 			{
 	
-				text_view.setText( sound_id );
-				try
-				{
-					Thread.sleep( 1000 );	
-				} catch ( InterruptedException ex ) {
-					
-					Thread.currentThread( ).interrupt( );
-				}
-				
-				
-	
+				log.append_text( "Play:" );
+				log.append_text( Integer.toString( sound_id ) );
+
 				sound_pool.play( sound_id, volume, volume, 1, 0, 1f );
 			}
 			

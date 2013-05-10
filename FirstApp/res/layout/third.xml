@@ -3,11 +3,14 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-	<TextView
+	<com.mycompany.firstapp.Log_View
 		android:id="@+id/log"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-	/>
+		android:lines="4"
+		android:maxLines="30"
+		android:scrollbars="vertical"		
+		/>
 	
 	<TextView
 		android:id="@+id/third_text"
