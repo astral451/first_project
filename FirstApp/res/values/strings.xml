@@ -23,4 +23,18 @@
 	<string name="third_act_toggle_off">Toggle Off</string>
 	<string name="btn_a">A</string>
 	<string name="btn_b">B</string>
+
+	<string name="country_prompt">Choose a country</string>
+
+	<string-array name="country_array">
+		<item>Malaysia</item>
+		<item>United States</item>
+		<item>Indonesia</item>
+		<item>France</item>
+		<item>Italy</item>
+		<item>Singapore</item>
+		<item>New Zealand</item>
+		<item>India</item>
+	</string-array>
+			
 </resources>

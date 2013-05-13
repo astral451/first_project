@@ -1,5 +1,7 @@
 package com.mycompany.firstapp;
 
+import java.util.ArrayList;
+import java.util.List;
 import android.view.KeyEvent;
 import android.view.View;
 import android.app.Activity;
@@ -18,6 +20,11 @@ public class Second_Activity extends Activity
 	private CheckBox chkWindows;
 	private Button btnDisplay;
 	
+	// country spinner stuff
+	private Spinner country_spinner;
+	private Spinner spinner2;
+	private Button btn_submit;
+	
 	@Override
 	public void onCreate( Bundle savedInstanceState ) 
 	{
@@ -28,8 +35,14 @@ public class Second_Activity extends Activity
 		add_key_listener();
 		add_check_listener( );
 		add_button_listener( );
+		
+		// spinner setup
+		add_items_to_spinner2( );
+		//add_listener_on_button( );
+		add_listener_on_spinner_item_selected( );
+		
 	};
-	
+
 	View.OnClickListener button_listener = new View.OnClickListener( )
 	{
 		
@@ -51,6 +64,31 @@ public class Second_Activity extends Activity
 		}
 		
 	};
+	
+	View.OnClickListener country_button_listener = new View.OnClickListener( )
+	{
+		
+		
+		@Override
+		public void onClick( View v )
+		{
+			
+			country_spinner = ( Spinner ) findViewById( R.id.spinCountry );
+			spinner2 = ( Spinner ) findViewById( R.id.spinner2 );
+			
+			// make the display
+			StringBuffer result = new StringBuffer( "" );
+			
+			result.append( "onClickListener : " );
+			result.append( "\nspinner c : " + String.valueOf( country_spinner.getSelectedItem( ) ) ); 
+			result.append( "\nspinner 2 : " + String.valueOf( spinner2.getSelectedItem( ) ) );
+			
+			Toast.makeText( Second_Activity.this, result.toString(), Toast.LENGTH_SHORT ).show();
+			
+		}
+		
+	};
+	
 	
 	View.OnClickListener check_box_listener = new View.OnClickListener( )
 	{
@@ -81,8 +119,7 @@ public class Second_Activity extends Activity
 					Toast.makeText( Second_Activity.this, edit_text.getText(), Toast.LENGTH_LONG ).show( );
 					return true;
 					
-				} else if ( keycode == KeyEvent.KEYCODE_9 )
-				{
+				} else if ( keycode == KeyEvent.KEYCODE_9 ) {
 					String message = new String( "Number 9 is pressed." );
 					Toast.makeText( Second_Activity.this, message, Toast.LENGTH_LONG ).show( );
 					return true;
@@ -94,6 +131,9 @@ public class Second_Activity extends Activity
 		
 		
 	};
+
+	
+
 	public void connect_interfaces( )
 	{
 		chkIos = ( CheckBox ) findViewById( R.id.chkIos );
@@ -102,6 +142,37 @@ public class Second_Activity extends Activity
 		
 		edit_text = ( EditText ) findViewById( R.id.act_02_et );
 		btnDisplay = ( Button ) findViewById( R.id.btnDisplay );
+		
+		country_spinner = ( Spinner ) findViewById( R.id.spinCountry );
+		spinner2 = ( Spinner ) findViewById( R.id.spinner2 );
+		btn_submit = ( Button ) findViewById( R.id.btnSubmit );
+	}
+	
+	public void add_items_to_spinner2( )
+	{
+		
+		List<String> list = new ArrayList<String>( );
+		list.add( "list 1" );
+		list.add( "list 2" );
+		list.add( "list 3" );
+		
+		ArrayAdapter<String> data_adapter = new ArrayAdapter<String>( 
+				this, 
+				android.R.layout.simple_spinner_item,
+				list  
+				);
+				
+		data_adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+		spinner2.setAdapter( data_adapter );
+		
+	}
+	
+	public void add_listener_on_spinner_item_selected( )
+	{
+		
+		country_spinner = ( Spinner ) findViewById( R.id.spinCountry );
+		// the next listener lives in a different .java file
+		country_spinner.setOnItemSelectedListener( new custom_on_item_selected_listener() );
 		
 	}
 	
@@ -117,6 +188,7 @@ public class Second_Activity extends Activity
 	
 	public void add_button_listener( )
 	{
-		btnDisplay.setOnClickListener( button_listener );		
+		btnDisplay.setOnClickListener( button_listener );
+		btn_submit.setOnClickListener( country_button_listener );
 	}
 }
