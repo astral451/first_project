@@ -3,7 +3,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-	<com.mycompany.firstapp.Log_View
+    <com.mycompany.firstapp.Log_View
 		android:id="@+id/log"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
@@ -45,36 +45,61 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			/>
-	</RadioGroup>
-	
-	<Button
+    </RadioGroup>
+
+    <Button
 		android:id="@+id/thirdActButton"
 		android:text="@string/gender_display"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 	/>
 
-		<Button
-			android:id="@+id/play_letter_a"
-			android:text="@string/btn_a"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-		/>
-		
-		<Button
-			android:id="@+id/play_letter_b"
-			android:text="@string/btn_b"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-		/>
-	
-	<ToggleButton
-		android:id="@+id/thirdActToggleButton"
-		android:textOn="@string/third_act_toggle_on"
-		android:textOff="@string/third_act_toggle_off"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-	/>
-	
-		
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_gravity="left|center_vertical">
+        <Button
+            android:id="@+id/play_letter_a"
+            android:text="@string/btn_a"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+                />
+        <Button
+                android:id="@+id/play_letter_b"
+                android:text="@string/btn_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        <ToggleButton
+            android:id="@+id/thirdActToggleButton"
+            android:textOn="@string/third_act_toggle_on"
+            android:textOff="@string/third_act_toggle_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        />
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/progress_string"
+                android:id="@+id/progressButton"/>
+        <ProgressBar
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar"/>
+    </LinearLayout>
+    <AnalogClock
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/analogClock" android:layout_gravity="center"/>
+    <DigitalClock
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/digitalClock"/>
+
+
 </LinearLayout>

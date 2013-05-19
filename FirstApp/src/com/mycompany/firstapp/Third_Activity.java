@@ -3,13 +3,11 @@ package com.mycompany.firstapp;
 import android.util.TimeUtils;
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Button;
-import android.widget.ToggleButton;
-import android.widget.TextView;
+import android.widget.*;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.AnalogClock;
+import android.widget.ProgressBar;
+
 import java.util.HashMap;
 
 // sound stuff
@@ -38,6 +36,9 @@ public class Third_Activity extends Activity
 	private Button play_a;
 	private Button play_b;
 	private ToggleButton btn_toggle;
+    private android.widget.AnalogClock analog_clock;
+    private Button btn_prog;
+    private ProgressBar prog_bar;
 
 	// Audio
 	private SoundPool sound_pool;
@@ -124,7 +125,14 @@ public class Third_Activity extends Activity
 		boolean toggle_state = prefs.getBoolean( "toggle", true );
 
 		btn_toggle.setChecked( toggle_state );		
-	
+
+        analog_clock = ( AnalogClock ) findViewById( R.id.analogClock );
+
+        btn_prog = ( Button )findViewById( R.id.progressButton );
+        prog_bar = ( ProgressBar )findViewById( R.id.progressBar );
+        // progress
+
+
 	};
 	
 	

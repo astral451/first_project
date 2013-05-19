@@ -24,7 +24,7 @@
 	<string name="btn_a">A</string>
 	<string name="btn_b">B</string>
 
-	<string name="country_prompt">Choose a country</string>
+	<string name="country_prompt">Choose a country</string><string name="progress_string">Prog</string>
 
 	<string-array name="country_array">
 		<item>Malaysia</item>
