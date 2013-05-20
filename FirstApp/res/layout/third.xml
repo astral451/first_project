@@ -81,17 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
         />
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/progress_string"
-                android:id="@+id/progressButton"/>
-        <ProgressBar
-                style="?android:attr/progressBarStyleSmall"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/progressBar"/>
-    </LinearLayout>
+     </LinearLayout>
     <AnalogClock
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

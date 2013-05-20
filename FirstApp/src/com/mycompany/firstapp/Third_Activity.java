@@ -128,9 +128,6 @@ public class Third_Activity extends Activity
 
         analog_clock = ( AnalogClock ) findViewById( R.id.analogClock );
 
-        btn_prog = ( Button )findViewById( R.id.progressButton );
-        prog_bar = ( ProgressBar )findViewById( R.id.progressBar );
-        // progress
 
 
 	};

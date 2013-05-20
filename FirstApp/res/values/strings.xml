@@ -13,7 +13,9 @@
 	<string name="chk_android">Android</string>
 	<string name="chk_windows">Windows</string>
 	<string name="btn_display">Display</string>
-		
+	<string name="prog_act_button_string">Progress Activity</string>
+	<string name="btn_progress">Make Progress</string>
+	
 	<!-- Radio Buttons -->
 	<string name="radio_male">Male</string>
 	<string name="radio_female">Female</string>
