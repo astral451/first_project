@@ -3,6 +3,8 @@ import android.app.*;
 import android.os.*;
 import android.view.*;
 import android.widget.*;
+
+
 public class Progress_Activity extends Activity
 {
 
@@ -20,16 +22,14 @@ public class Progress_Activity extends Activity
 		super.onCreate( savedInstanceState );
 		setContentView( R.layout.progress );
 		
-		register_controls( );
-		
-		
-	}
-	
+		register_controls( );	
+	};
+
 	public void register_controls( )
 	{
 		
 		prog_button = ( Button ) findViewById( R.id.btn_progress );
-		prog_button.setOnClickListener( prog_button_listener );
+		//prog_button.setOnClickListener( prog_button_listener );
 		
 	}
 
@@ -40,74 +40,17 @@ public class Progress_Activity extends Activity
 		public void onClick( View v )
 		{
 			
-			prog_bar = new ProgressDialog( v.getContext( ) );
-			prog_bar.setCancelable( true );
-			prog_bar.setMessage( "File downloading... " );
-			prog_bar.setProgressStyle( ProgressDialog.STYLE_HORIZONTAL );
-			prog_bar.setMax( 100 );
-			prog_bar.setProgress( 0 );
-			prog_bar.show( );
-				
+			
+			prog_bar = new ProgressDialog( v.getContext() );
+			
+			
 			progress = 0;
 			filesize = 0;
 			
-			// thread stuff here
-			
 		}
 		
-	};
-	
-	
-	Runnable prog_bar_work = new Runnable( )
-	{
 		
-		public void run( )
-		{
-			while( progress < 100 )
-			{
-			
-				progress = do_some_stuff( );	
-				
-				try {
-					Thread.sleep( 1000 );
-				} catch( InterruptedException e ) {
-					//Interupt
-					e.printStackTrace();
-				}
-
-				progress_handler.post( new Runnable( ) {
-					
-					public void run( )
-					{
-						
-						prog_bar.setProgress( progress );
-						
-					}
-					
-				});
-				
-				
-				
-				
-			}
-			
-			if ( progress >= 100 )
-			{
-				
-				// wait to see the prog conclude
-				try {
-					Thread.sleep( 3000 );
-				} catch( InterruptedException e ) {
-					//Interupt
-					e.printStackTrace();
-				}
-				
-				prog_bar.dismiss();
-				
-			}
-		}	
 	};
-	
 	
 	public int do_some_stuff( )
 	{
@@ -116,4 +59,6 @@ public class Progress_Activity extends Activity
 		return 10;
 		
 	};
+	
+	
 }

@@ -39,6 +39,17 @@
 				android:value="com.mycompany.firstapp.First_App_Activity"
 			/>
         </activity>
- </application>
+		<activity
+            android:label="@string/progress_activity"
+            android:name=".Progress_Activity" 
+			android:parentActivityName="com.mycompany.firstapp.Progress_Activity" >
+
+			<meta-data
+				android:name="android.support.PARENT_ACTIVITY"
+				android:value="com.mycompany.firstapp.First_App_Activity"
+			/>
+        </activity>
+		
+</application>
 
 </manifest>

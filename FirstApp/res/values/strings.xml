@@ -14,7 +14,8 @@
 	<string name="chk_windows">Windows</string>
 	<string name="btn_display">Display</string>
 	<string name="prog_act_button_string">Progress Activity</string>
-	<string name="btn_progress">Make Progress</string>
+	<string name="progress_button">Make Progress</string>
+	<string name="progress_activity">Progress Activity</string>
 	
 	<!-- Radio Buttons -->
 	<string name="radio_male">Male</string>

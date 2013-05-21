@@ -18,6 +18,7 @@ public class First_App_Activity extends Activity
 	ImageButton image_button;
     Button new_button;
 	Button third_act_button;
+	Button prog_act_button;
 	//public Intent new_intent;
 	
 	
@@ -31,8 +32,17 @@ public class First_App_Activity extends Activity
 		addListenerOnButton();
     };
 	
+	public void go_to_prog_activity( View view )
+	{
+		// these are set up in the XML with android:onClick
+		Intent prog_intent = new Intent( First_App_Activity.this, Progress_Activity.class );
+		startActivity( prog_intent );
+	
+	};
+	
 	public void go_to_second_activity( View view )
 	{
+		// these are set up in the XML with android:onClick
 		Intent new_intent = new Intent( First_App_Activity.this, Second_Activity.class);
 		startActivity( new_intent );
 	};
@@ -49,7 +59,9 @@ public class First_App_Activity extends Activity
 		
 		third_act_button = (Button) findViewById( R.id.third_act_button );
 		third_act_button.setOnClickListener( third_act_listener );
-		//new_button = ( Button ) findViewById( R.id.button_02 );
+		
+		prog_act_button = ( Button ) findViewById( R.id.progres_act );
+		
 		
 		
 	};
@@ -84,12 +96,7 @@ public class First_App_Activity extends Activity
 		@Override
 		public void onClick( View arg0 ) {
 			Toast.makeText( First_App_Activity.this, "Image button is clicked", Toast.LENGTH_SHORT ).show( );
-			int x = 1;
 			
 		}
-		
-	
-	
-	
 	};
 }
