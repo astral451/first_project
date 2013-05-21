@@ -34,6 +34,45 @@ public class Progress_Activity extends Activity
 		
 	}
 
+	// main thread
+	Runnable run_thread = new Runnable( )
+	{
+		
+		public void run( )
+		{
+			
+			while( progress < 100 )
+			{
+
+				progress = do_some_stuff();
+				sleep( 1000 );
+
+				progress_handler.post( new Runnable( ) 
+					{
+
+						public void run( )
+						{
+
+							prog_bar.setProgress( progress );
+
+						}
+
+					} );
+
+			}// end while
+
+			if ( progress >= 100 )
+			{
+
+				sleep( 2000 );
+				prog_bar.dismiss();
+
+			}
+		}
+	
+	};
+	
+	
 	View.OnClickListener prog_button_listener = new View.OnClickListener( )
 	{
 		
@@ -53,41 +92,7 @@ public class Progress_Activity extends Activity
 			progress = 0;
 			filesize = 0;
 			
-			new Thread( new Runnable( )
-			{
-				
-				public void run( )
-				{
-					
-					while( progress < 100 )
-					{
-						
-						progress = do_some_stuff();
-						sleep( 10 );
-						
-						progress_handler.post( new Runnable( ) 
-						{
-							
-							public void run( )
-							{
-								
-								prog_bar.setProgress( progress );
-								
-							}
-							
-						} );
-						
-					}// end while
-					
-					if ( progress >= 100 )
-					{
-						
-						sleep( 30 );
-						prog_bar.dismiss();
-						
-					}
-				}
-			} );
+			new Thread( run_thread ).start( );
 		}
 	};
 	
@@ -106,22 +111,22 @@ public class Progress_Activity extends Activity
 	{
 		
 		
-		while ( filesize <= 10000 )
+		while ( filesize <= 1000000 )
 		{
 			filesize ++;
 			
-			if ( filesize == 2000 )
+			if ( filesize == 200000 )
 			{
 				return 20;
-			} else if ( filesize == 4000 )
+			} else if ( filesize == 400000 )
 			{
 				return 40;
 			}
-			else if ( filesize == 6000 )
+			else if ( filesize == 600000 )
 			{
 				return 60;
 			}
-			else if ( filesize == 8000 )
+			else if ( filesize == 800000 )
 			{
 				return 80;
 			}
