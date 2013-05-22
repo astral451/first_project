@@ -1,12 +1,12 @@
 package com.mycompany.firstapp;
 
 import android.app.*;
+import android.content.*;
+import android.net.*;
 import android.os.*;
 import android.view.*;
+import android.view.View.*;
 import android.widget.*;
-import android.net.Uri;
-import android.content.Intent;
-import android.view.View.OnClickListener;
 
 
 
@@ -14,11 +14,13 @@ import android.view.View.OnClickListener;
 public class First_App_Activity extends Activity
 {
 
+	final Context context  = this;
 	Button button;
 	ImageButton image_button;
     Button new_button;
 	Button third_act_button;
 	Button prog_act_button;
+	Button popup_button;
 	//public Intent new_intent;
 	
 	
@@ -50,6 +52,9 @@ public class First_App_Activity extends Activity
 	public void addListenerOnButton( )
 	{
 		
+		popup_button = ( Button ) findViewById( R.id.button_popup_dialog );
+		// add the listener here.
+		
 		button = (Button) findViewById( R.id.button_01 );
 		button.setOnClickListener( first_listener );
 	
@@ -63,6 +68,25 @@ public class First_App_Activity extends Activity
 		prog_act_button = ( Button ) findViewById( R.id.progres_act );
 		
 		
+		
+	};
+	
+	
+	View.OnClickListener popup_button_listener = new OnClickListener( )
+	{
+		
+		@Override
+		public void onClick( View v )
+		{
+			
+			final Dialog popup_dialog = new Dialog( context );
+			popup_dialog.setContentView( R.layout.popup_dialog );
+			popup_dialog.setTitle( "Android custom dialog" );
+			
+			TextView text_view = ( TextView ) findViewById( R.id.popup_text );
+			// finish up the custom view here.
+			
+		}
 		
 	};
 	

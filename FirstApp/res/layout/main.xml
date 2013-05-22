@@ -9,6 +9,14 @@
         android:layout_height="wrap_content"
         android:text="@string/hello" />
 
+
+	<Button
+		android:id="@+id/button_popup_dialog"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/popup_dialog_string"
+		/>
+	
 	<Button
 		android:id="@+id/button_01"
 		android:layout_width="wrap_content"
