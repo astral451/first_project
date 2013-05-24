@@ -31,7 +31,7 @@ public class First_App_Activity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-		addListenerOnButton();
+		add_buttons();
     };
 	
 	public void go_to_prog_activity( View view )
@@ -49,11 +49,12 @@ public class First_App_Activity extends Activity
 		startActivity( new_intent );
 	};
 	
-	public void addListenerOnButton( )
+	public void add_buttons( )
 	{
 		
 		popup_button = ( Button ) findViewById( R.id.button_popup_dialog );
 		// add the listener here.
+		popup_button.setOnClickListener( popup_button_listener );
 		
 		button = (Button) findViewById( R.id.button_01 );
 		button.setOnClickListener( first_listener );
@@ -81,10 +82,29 @@ public class First_App_Activity extends Activity
 			
 			final Dialog popup_dialog = new Dialog( context );
 			popup_dialog.setContentView( R.layout.popup_dialog );
-			popup_dialog.setTitle( "Android custom dialog" );
+			popup_dialog.setTitle( "Title..." );
 			
-			TextView text_view = ( TextView ) findViewById( R.id.popup_text );
+			TextView text_view = ( TextView ) popup_dialog.findViewById( R.id.popup_text );
 			// finish up the custom view here.
+			text_view.setText( "Android popup dialog" );
+			ImageView image = ( ImageView ) popup_dialog.findViewById( R.id.popup_image );
+			image.setImageResource( R.drawable.ic_launcher );
+			
+			Button button = ( Button ) popup_dialog.findViewById( R.id.popup_button );
+			button.setOnClickListener( new OnClickListener( ) 
+			{
+				
+				@Override
+				public void onClick( View v )
+				{
+					
+					popup_dialog.dismiss( );
+					
+				}
+				
+			} ); // end new listener
+			
+			popup_dialog.show( );
 			
 		}
 		
