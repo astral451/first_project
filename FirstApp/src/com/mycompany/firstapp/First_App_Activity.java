@@ -8,6 +8,7 @@ import android.view.*;
 import android.view.View.*;
 import android.widget.*;
 
+import com.mycompany.firstapp.Log_Data;
 
 
 
@@ -37,14 +38,16 @@ public class First_App_Activity extends Activity
 	public void go_to_prog_activity( View view )
 	{
 		// these are set up in the XML with android:onClick
+		Log_Data.add_entry( "progress activity" );
 		Intent prog_intent = new Intent( First_App_Activity.this, Progress_Activity.class );
 		startActivity( prog_intent );
-	
+		
 	};
 	
 	public void go_to_second_activity( View view )
 	{
 		// these are set up in the XML with android:onClick
+		Log_Data.add_entry( "second activity" );
 		Intent new_intent = new Intent( First_App_Activity.this, Second_Activity.class);
 		startActivity( new_intent );
 	};
