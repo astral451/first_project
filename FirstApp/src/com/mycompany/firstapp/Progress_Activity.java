@@ -44,7 +44,7 @@ public class Progress_Activity extends Activity
 				public void onClick ( View v )
 					{
 
-
+						Log_Data.add_entry( "progress 2" );
 						prog_bar = new ProgressDialog ( v.getContext ( ) );
 
 

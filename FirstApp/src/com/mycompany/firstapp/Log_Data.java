@@ -1,28 +1,23 @@
 package com.mycompany.firstapp;
 
+import java.util.*;
+
 public class Log_Data
 {
 
-	private static String[] entries = new String[ 256 ];
+	private static List entries = new ArrayList( );
 	
 	
 	public static void add_entry( String string )
 	{
-		int empty_idx = 0;
-		for ( int i = 1; i<entries.length; i++ ){
-			
-			if ( entries[ i ] == null ) {
-				empty_idx = i;
-				break;
-			}
-		}
 		
-		entries[ empty_idx ] = string;
+		entries.add( string );
 	}
 	
 	public static String get_entries( )
 	{
 		
+	
 		return entries.toString();
 		
 	}

@@ -7,8 +7,10 @@ import android.widget.*;
 import android.view.View;
 import android.widget.AnalogClock;
 import android.widget.ProgressBar;
-
 import java.util.HashMap;
+
+// Log Data
+import com.mycompany.firstapp.Log_Data;
 
 // sound stuff
 import android.media.AudioManager;
@@ -89,6 +91,7 @@ public class Third_Activity extends Activity
 				String text;
 				text = "id : %s";
 				text = text.format( Integer.toString( sampleId ) );
+				Log_Data.add_entry( text );
 				log.append_text( text );
 				sound_loaded = true;
 			}
