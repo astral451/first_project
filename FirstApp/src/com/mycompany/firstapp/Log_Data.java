@@ -5,7 +5,7 @@ import java.util.*;
 public class Log_Data
 {
 
-	private static List entries = new ArrayList( );
+	private static List<String> entries = new ArrayList<String>( );
 	
 	
 	public static void add_entry( String string )
