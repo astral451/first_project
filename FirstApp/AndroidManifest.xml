@@ -50,6 +50,15 @@
 			/>
         </activity>
 		
+		<activity
+			android:label="log_viewer"
+			android:name=".Log_Viewer"
+			android:parentActivityName="com.mycompany.firstapp.First_App_Activity">
+			<meta-data
+				android:name="android.support.PARENT_ACTIVITY"
+				android:value="com.mycompany.firstapp.First_App_Activity"
+			/>
+		</activity>
 </application>
 
 </manifest>

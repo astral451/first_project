@@ -1,10 +1,10 @@
 package com.mycompany.firstapp;
 import android.app.*;
+import android.content.*;
 import android.os.*;
 import android.view.*;
 import android.widget.*;
-
-import com.mycompany.firstapp.Log_Data;
+import com.mycompany.firstapp.*;
 
 
 public class Progress_Activity extends Activity
@@ -63,8 +63,10 @@ public class Progress_Activity extends Activity
 				public void onClick ( View v )
 					{
 
-						String string = Log_Data.get_entries ( );
-						Toast.makeText(Progress_Activity.this, string, Toast.LENGTH_SHORT ).show();
+						Intent log_viewer_intent = new Intent( Progress_Activity.this, Log_Viewer.class );
+						startActivity( log_viewer_intent );
+						//String string = Log_Data.get_entries ( );
+						//Toast.makeText(Progress_Activity.this, string, Toast.LENGTH_SHORT ).show();
 					}
 			};
 
