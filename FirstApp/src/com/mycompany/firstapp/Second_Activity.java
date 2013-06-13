@@ -58,6 +58,8 @@ public class Second_Activity extends Activity
 			result.append( "\nAndroid check : ").append( and );
 			result.append( "\nWindows check : ").append( win );
 			
+			Log_Data.add_entry( "Second results" );
+			
 			//Print it out
 			Toast.makeText( Second_Activity.this, result.toString(),Toast.LENGTH_LONG ).show( );
 			
@@ -83,6 +85,8 @@ public class Second_Activity extends Activity
 			result.append( "\nspinner c : " + String.valueOf( country_spinner.getSelectedItem( ) ) ); 
 			result.append( "\nspinner 2 : " + String.valueOf( spinner2.getSelectedItem( ) ) );
 			
+			Log_Data.add_entry( "country spinner" );
+			
 			Toast.makeText( Second_Activity.this, result.toString(), Toast.LENGTH_SHORT ).show();
 			
 		}
@@ -101,6 +105,7 @@ public class Second_Activity extends Activity
 				Toast.makeText( Second_Activity.this, "Bro, try Android", Toast.LENGTH_SHORT ).show( );
 			}
 			
+			Log_Data.add_entry( "check box" );
 		}
 		
 	};
@@ -121,6 +126,7 @@ public class Second_Activity extends Activity
 					
 				} else if ( keycode == KeyEvent.KEYCODE_9 ) {
 					String message = new String( "Number 9 is pressed." );
+					Log_Data.add_entry( "number 9" );
 					Toast.makeText( Second_Activity.this, message, Toast.LENGTH_LONG ).show( );
 					return true;
 					

@@ -14,11 +14,11 @@ public class Log_Data
 		entries.add( string );
 	}
 	
-	public static String get_entries( )
+	public static List get_entries( )
 	{
 		
 	
-		return entries.toString();
+		return entries;
 		
 	}
 }

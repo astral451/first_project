@@ -59,6 +59,13 @@ public class Log_View extends TextView
 		auto_scroll = scroll;
 	}
 	
+	public void clear_text( )
+	{
+		
+		this.setText( "" );
+		
+	}
+	
 	public void append_text( String str )
 	{
 		
@@ -72,7 +79,6 @@ public class Log_View extends TextView
 			int current_count = this.getLineCount();
 			this.setScrollY( current_count * this.getLineHeight() - this.getHeight() );	
 		}
-		
-		
 	}
+	
 }

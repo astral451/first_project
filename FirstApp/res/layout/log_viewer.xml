@@ -3,11 +3,19 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-	
+
+	<com.mycompany.firstapp.Log_View
+		android:id="@+id/log_viewer_text"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:maxLines="30"
+		android:scrollbars="vertical"		
+	/>
+	<!-- Removing the text view
 	<TextView
 		android:id="@+id/log_viewer_text"
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent"		
 	/>
-
+	-->
 </LinearLayout>
