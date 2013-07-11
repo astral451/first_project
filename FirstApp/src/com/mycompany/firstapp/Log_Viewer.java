@@ -1,3 +1,6 @@
+// Log viewer is an Activity that will show the contents
+// of the Log_Data which is persitent throughout the app
+
 package com.mycompany.firstapp;
 
 import android.app.*;

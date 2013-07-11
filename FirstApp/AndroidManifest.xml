@@ -59,6 +59,15 @@
 				android:value="com.mycompany.firstapp.First_App_Activity"
 			/>
 		</activity>
+		<activity
+			android:label="Graphics_Activity"
+			android:name=".graphics.Graphics_Activity"
+			android:parentActivityName="com.mycompany.firstapp.First_App_Activity">>
+			<meta-data
+				android:name="android.support.PARENT_ACTIVITY"
+				android:value="com.mycompany.firsstapp.First_App_Activity"
+				/>
+		</activity>
 </application>
 
 </manifest>
