@@ -18,11 +18,8 @@ public class Log_Viewer extends Activity
 		setContentView( R.layout.log_viewer);
 		
 		text_view = ( com.mycompany.firstapp.Log_View ) findViewById( R.id.log_viewer_text );
-		
-		
 		text_view.setText( split_log_data( Log_Data.get_entries() ) );
-		
-		
+
 	}
 	
 	public String split_log_data( List entries  )
@@ -38,15 +35,6 @@ public class Log_Viewer extends Activity
 		return final_string.toString();
 		
 	}
-	
-//	
-//	@Override
-//	public void onCreate ( Bundle savedInstanceState )
-//		{
-//			super.onCreate ( savedInstanceState );
-//			setContentView ( R.layout.main );
-//
-//			add_buttons ( );
-//			};
+
 	
 }
