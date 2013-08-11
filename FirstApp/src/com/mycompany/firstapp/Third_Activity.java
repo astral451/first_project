@@ -22,7 +22,6 @@ import com.mycompany.firstapp.Audio_Data;
 
 import com.mycompany.firstapp.Log_View;
 import android.text.method.*;
-
 // preferences
 
 
@@ -106,7 +105,6 @@ public class Third_Activity extends Activity
 		log = ( Log_View ) findViewById( R.id.log );
 		log.setMovementMethod( new ScrollingMovementMethod( ) );
 		log.set_auto_scroll( true );
-		
 		// examples of grouped controls
 		radio_sex_group = ( RadioGroup ) findViewById( R.id.radioSex );
 		btn_display = ( Button ) findViewById( R.id.thirdActButton );

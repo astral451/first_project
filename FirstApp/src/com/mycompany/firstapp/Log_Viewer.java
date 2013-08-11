@@ -29,7 +29,7 @@ public class Log_Viewer extends Activity
 	{
 		//int num_entries = entries. //entries.count;
 		StringBuffer final_string = new StringBuffer();
-		for( String entry: entries )
+		for( Object entry: entries )
 		{
 			String new_string = entry + "\n";
 			final_string.append( new_string );			
