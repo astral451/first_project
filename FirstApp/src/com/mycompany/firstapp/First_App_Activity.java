@@ -31,7 +31,7 @@ public class First_App_Activity extends Activity
 	{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
+		Log_Data.add_entry( "First_App_Activity STARTED" );
 		add_buttons();
     };
 	
