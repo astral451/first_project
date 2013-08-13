@@ -56,12 +56,4 @@ public class Draw_View extends View implements OnTouchListener {
 	}
 }
 
-class Point {
-	float x, y, radius;
 
-	@Override
-	public String toString( ){
-		return x + ", " + y + ", " + radius;
-	}
-
-}
