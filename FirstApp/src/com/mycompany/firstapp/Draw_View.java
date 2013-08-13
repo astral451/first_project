@@ -14,7 +14,7 @@ import android.view.View.OnTouchListener;
 
 /**
  * Created by nathan on 8/12/13.
- */
+ **/
 public class Draw_View extends View implements OnTouchListener {
 
 	private static final String TAG = "DrawView";
@@ -33,30 +33,35 @@ public class Draw_View extends View implements OnTouchListener {
 	@Override
 	public void onDraw( Canvas canvas ) {
 		for ( Point point : points ) {
-			canvas.drawCircle( point.x, point.y, 5, paint );
+			canvas.drawCircle( point.x, point.y, point.radius, paint );
 		}
 	}
 
 	public boolean onTouch( View view, MotionEvent event ) {
-		// ..
-		Point point = new Point( );
-		point.x = event.getX();
-		point.y = event.getY();
 
-		points.add( point );
-		// I assume this forces a redraw
+		// first create a new point
+		if( event.getAction() == MotionEvent.ACTION_DOWN ) {
+			Point current_point = new Point();
+			current_point.x = event.getX();
+			current_point.y = event.getY();
+			current_point.radius = 1;
+			points.add( current_point );
+		}
+		if( event.getAction( ) == MotionEvent.ACTION_MOVE ) {
+			Integer index = points.size() - 1;
+			points.get( index ).radius += 1;
+		}
 		invalidate();
-		Log.d( TAG, "point: " + point );
 		return true;
 	}
-
 }
 
 class Point {
-	float x, y;
+	float x, y, radius;
 
 	@Override
 	public String toString( ){
-		return x + ", " + y;
+		return x + ", " + y + ", " + radius;
 	}
+
 }
