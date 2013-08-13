@@ -22,6 +22,7 @@ public class First_App_Activity extends Activity
 	Button third_act_button;
 	Button prog_act_button;
 	Button popup_button;
+	Button draw_button;
 	//public Intent new_intent;
 	
 	
@@ -43,7 +44,15 @@ public class First_App_Activity extends Activity
 		startActivity( prog_intent );
 		
 	};
-	
+
+	public void on_draw_button( View view )
+	{
+
+		Log_Data.add_entry( "entering draw ");
+		Intent draw_intent = new Intent( First_App_Activity.this, Draw_Activity.class );
+		startActivity( draw_intent );
+	};
+
 	public void go_to_second_activity( View view )
 	{
 		// these are set up in the XML with android:onClick
@@ -70,7 +79,8 @@ public class First_App_Activity extends Activity
 		third_act_button.setOnClickListener( third_act_listener );
 		
 		prog_act_button = ( Button ) findViewById( R.id.progres_act );
-		
+
+		draw_button = ( Button ) findViewById( R.id.draw_button );
 		
 		
 	};
