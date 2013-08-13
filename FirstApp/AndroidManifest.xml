@@ -21,6 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:label="Draw_Activity"
+            android:name=".Draw_Activity"
+            android:parentActivityName="com.mycompany.firstapp.First_App_Activity" >
+        </activity>
 		<activity
             android:label="@string/second_activity"
             android:name=".Second_Activity" 
