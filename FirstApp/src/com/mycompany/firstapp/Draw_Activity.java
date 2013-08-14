@@ -24,16 +24,8 @@ public class Draw_Activity extends Activity {
 
 		setContentView( R.layout.draw_view );
 		draw_view = ( Draw_View ) findViewById( R.id.draw_view );
-		//setContentView( draw_view );
-		//Set Full screen view
-		//getWindow( ).setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		//requestWindowFeature( Window.FEATURE_NO_TITLE );
-		
-		//draw_view = new Draw_View( this );
-		
 		draw_button = ( Button ) findViewById( R.id.draw_button );
 		
-		//setContentView( draw_view );
 		draw_view.requestFocus( );
 
 	}
