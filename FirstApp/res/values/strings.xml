@@ -27,6 +27,7 @@
 	<string name="third_act_toggle_off">Toggle Off</string>
 	<string name="btn_a">A</string>
 	<string name="btn_b">B</string>
+    <string name="draw_button">Draw Button</string>
 
 	<string name="log_view_text">Log Viewer</string>
 	
