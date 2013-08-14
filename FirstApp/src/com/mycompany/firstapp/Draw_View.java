@@ -42,6 +42,7 @@ public class Draw_View extends View implements OnTouchListener {
 	// A constructor for convienence
 	private void constructor( )
 	{
+		Log_Data.add_entry( "Draw View" );
 		setFocusable( true );
 		setFocusableInTouchMode( true );
 		this.setOnTouchListener( this );
