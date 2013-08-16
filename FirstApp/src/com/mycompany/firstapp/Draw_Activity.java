@@ -8,6 +8,8 @@ import android.view.WindowManager;
 import java.util.ArrayList;
 import java.util.List;
 import android.widget.*;
+import android.view.*;
+import android.view.View.*;
 
 
 /**
@@ -18,6 +20,7 @@ public class Draw_Activity extends Activity {
 	Button draw_button;
 	List<Point> points = new ArrayList<Point>();
 
+	
 	@Override
 	public void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
@@ -26,6 +29,7 @@ public class Draw_Activity extends Activity {
 		draw_view = ( Draw_View ) findViewById( R.id.draw_view );
 		draw_button = ( Button ) findViewById( R.id.draw_button );
 		
+		draw_button.setOnClickListener( draw_button_listener );
 		draw_view.requestFocus( );
 
 	}
@@ -37,5 +41,17 @@ public class Draw_Activity extends Activity {
 		Log_Data.add_entry("leaving drawing");
 		super.onPause();
 	}
+	
+	View.OnClickListener draw_button_listener = new OnClickListener( )
+	{
+
+		
+		@Override
+		public void onClick( View view )
+		{
+			draw_view.force_update_points();
+			//update_circles();
+		}
+	};
 
 }
