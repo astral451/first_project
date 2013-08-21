@@ -16,6 +16,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.os.*;
 
 
 /**
@@ -65,15 +66,15 @@ public class Draw_View extends View implements OnTouchListener
 	}
 	
 	
-	public void update_points( List<Point> new_points  )
+	public void update_points( List<Float> new_points  )
 	{
 		//new Update_Circles().execute( points );
 		for( int i = 0; i < new_points.size(); i++ )
 		{
-			Log_Data.add_entry( Float.toString( points.get( i ).radius ) + " " + Float.toString( new_points.get( i ).radius ) );
+			
 			//Log_Data.add_entry( Float.toString( new_points.get( i ).radius ) );
 			
-			points.get( i ).radius = new_points.get( i ).radius;
+			points.get( i ).radius = new_points.get( i );
 			
 		}
 		invalidate();
@@ -100,7 +101,7 @@ public class Draw_View extends View implements OnTouchListener
 	{
 		int min_value = 64;
 		int max_value = 255;
-		int num_colors = 4;
+		int num_colors = 64;
 		int min_radius = 4;
 		int color_delta = ( max_value - min_value ) / num_colors;
 
@@ -153,34 +154,39 @@ public class Draw_View extends View implements OnTouchListener
 
 
 	
-	private class Update_Circles extends AsyncTask< List<Point>, Void, List<Point> > 
+	private class Update_Circles extends AsyncTask< List<Point>, Void, List<Float> > 
 	{
 
 		//private List<Point> local_points;
 		
 		
-		protected List<Point> doInBackground( List<Point>... points )
+		protected List<Float> doInBackground( List<Point>... points )
 		{
 		
 			List<Point> local_points = points[ 0 ];
+			List<Float> new_radi = new ArrayList<Float>();
 			
-			Log_Data.add_entry( "Update_Circles : " + Integer.toString( local_points.size() ) );
+			//Log_Data.add_entry( "Update_Circles : " + Integer.toString( local_points.size() ) );
 			
 			for( int i = 0; i < local_points.size(); i++ )
 			{
-				Log_Data.add_entry( "radius : " + Float.toString( local_points.get( i ).radius ) );
+				
 				float current_radius = local_points.get( i ).radius;
-				current_radius += 1;
-				Log_Data.add_entry( "NEW radius : " + Float.toString( current_radius ) );
-				local_points.get( i ).radius = current_radius;
+				current_radius += 3;
+				//Log_Data.add_entry( "NEW radius : " + Float.toString( current_radius ) );
+				//local_points.get( i ).radius = current_radius;
+				new_radi.add( current_radius );
 				//local_point.radius += .25;
+				//SystemClock.sleep( 2000 );
 			
 			}
-		
-			return local_points;
+			Log_Data.add_entry( Integer.toString( local_points.size() ) + "circles updated" );
+		    SystemClock.sleep(  7000 );
+			Log_Data.add_entry( Integer.toString( local_points.size() ) + "circles found" );
+			return new_radi;
 		}
 	
-		protected void onPostExecute( List<Point> in_points )
+		protected void onPostExecute( List<Float> in_points )
 		{
 			
 			Log_Data.add_entry( "Update_Circles : onPostExecute" );
