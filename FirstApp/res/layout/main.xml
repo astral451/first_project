@@ -61,4 +61,10 @@
             android:singleLine="false"
             android:onClick="on_draw_button"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/audio_button"
+        android:onClick="on_audio_button"
+        android:text="@string/audio_button"/>
 </LinearLayout>

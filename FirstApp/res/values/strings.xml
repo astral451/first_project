@@ -31,7 +31,7 @@
 
 	<string name="log_view_text">Log Viewer</string>
 	
-	<string name="country_prompt">Choose a country</string><string name="progress_string">Prog</string>
+	<string name="country_prompt">Choose a country</string><string name="progress_string">Prog</string><string name="start_audio">Start Start</string><string name="stop_audio">Stop Audio</string><string name="audio_button">Play Audio</string>
 
 	<string-array name="country_array">
 		<item>Malaysia</item>

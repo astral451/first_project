@@ -23,6 +23,7 @@ public class First_App_Activity extends Activity
 	Button prog_act_button;
 	Button popup_button;
 	Button draw_button;
+	Button audio_button;
 	//public Intent new_intent;
 	
 	
@@ -45,9 +46,16 @@ public class First_App_Activity extends Activity
 		
 	};
 
+
+	public void on_audio_button( View view )
+	{
+		Log_Data.add_entry( "entering Audio" );
+		Intent audio_intent = new Intent( First_App_Activity.this, Audio_Activity.class );
+		startActivity( audio_intent );
+	}
+
 	public void on_draw_button( View view )
 	{
-
 		Log_Data.add_entry( "entering draw ");
 		Intent draw_intent = new Intent( First_App_Activity.this, Draw_Activity.class );
 		startActivity( draw_intent );
@@ -81,7 +89,8 @@ public class First_App_Activity extends Activity
 		prog_act_button = ( Button ) findViewById( R.id.progres_act );
 
 		draw_button = ( Button ) findViewById( R.id.draw_button );
-		
+
+		audio_button = ( Button ) findViewById( R.id.audio_button );
 		
 	};
 	
