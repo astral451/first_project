@@ -9,6 +9,10 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 
+import com.mycompany.firstapp.audio.Tone;
+import com.mycompany.firstapp.audio.Sine;
+
+
 /**
  * Created by nathan on 8/20/13.
  */
@@ -16,18 +20,19 @@ public class Audio_Activity extends Activity {
 
 	private Button start_audio;
 	private Button stop_audio;
-
+	private Tone new_tone;
+	/*
 	private Thread audio_thread;
 	private AudioTrack audio_track;
 	// All the audio stuff
 	private final int duration = 3; // seconds
-	private final int sample_rate = 8000;
+	private final int sample_rate = 8000; // samples per second
 	private final int num_samples = duration * sample_rate;
 	private final double sample[ ] = new double[num_samples];
 	private final double freq_of_tone = 880; // hz
 
 	private final byte generated_snd[ ] = new byte[ 2 * num_samples];
-
+	*/
 	Handler handler = new Handler( );
 
 
@@ -41,6 +46,7 @@ public class Audio_Activity extends Activity {
 		stop_audio = ( Button )findViewById( R.id.stop_audio );
 
 		start_audio.setOnClickListener ( start_listener );
+		stop_audio.setOnClickListener ( stop_listener );
 	}
 
 	View.OnClickListener start_listener =  new View.OnClickListener( )
@@ -48,63 +54,33 @@ public class Audio_Activity extends Activity {
 		@Override
 		public void onClick( View view )
 		{
-			run_audio_thread ();
+			Thread audio_thread = new Thread( new Audio_Thread( ) );
+			audio_thread.start( );
 		}
 
 	};
 
-	View.OnClickListener stop_listener = new View.OnClickListener ( ) {
+	View.OnClickListener stop_listener = new View.OnClickListener( )
+	{
+
 		@Override
-		public void onClick( View view ) {
-			if ( audio_thread.isAlive ( ) )
-			{
-				audio_track.stop( );
-			}
+		public void onClick( View view )
+		{
+			new_tone.stop_sound( );
+
 		}
-
 	};
-
 	protected  void run_audio_thread( )
 	{
 		Thread audio_thread = new Thread( new Audio_Thread( ) );
 		audio_thread.start( );
 	}
 
-	void gen_tone( )
-	{
-		// fill the array
-		for( int i = 0; i < num_samples; ++i )
-		{
-			sample[ i ] = Math.sin( 2 * Math.PI * i / ( sample_rate / freq_of_tone) );
-		}
-
-		// convert to 16 bit pcm sound array
-		//assumes the sample buffer is normalized
-		int idx = 0;
-		for ( double d_val : sample )
-		{
-			short val = ( short ) ( d_val * 32767 );
-			generated_snd[ idx++ ] = ( byte ) ( val & 0x00ff );
-			generated_snd[ idx++ ] = ( byte ) ( ( val & 0xff00 ) >>> 8 );
-		}
-	}
 
 	void play_sound( )
 	{
-
-		AudioTrack audio_track = new AudioTrack(
-				AudioManager.STREAM_MUSIC,
-				8000,
-				AudioFormat.CHANNEL_OUT_DEFAULT,
-				AudioFormat.ENCODING_PCM_16BIT,
-				num_samples,
-				AudioTrack.MODE_STATIC
-				);
-		audio_track.write(generated_snd, 0, num_samples );
-		audio_track.play();
-
+		new_tone.play_sound( );
 	}
-
 
 	private class Audio_Thread implements Runnable
 	{
@@ -113,24 +89,17 @@ public class Audio_Activity extends Activity {
 		public void run( )
 		{
 
-			gen_tone( );
+			//new_tone = com.mycompany.firstapp.audio.Sine( 1, 880 );
+			new_tone = new Sine( 1, 880 );
+			new_tone.create_sound();
+			//gen_tone( );
 			handler.post( new Runnable() {
 				@Override
 				public void run() {
-					play_sound();
+					new_tone.play_sound();
 				}
 			});
 		}
 
-		public void stop( )
-		{
-			handler.post( new Runnable ( ) {
-				@Override
-				public void run() {
-
-					audio_track.stop( );
-				}
-			});
-		}
 	}
 }
