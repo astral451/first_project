@@ -12,15 +12,16 @@ public class Sine implements Tone
 	public double frequency;
 
 	private boolean keep_playing;
-	private Thread audio_thread;
+	//private Thread audio_thread;
 	private AudioTrack audio_track;
-	private final int sample_rate = 8000; // samples per second
+	//private final int sample_rate = 8000; // samples per second
 	private int duration; // seconds
 	private int num_samples; // = duration * sample_rate;
 	private double sample[ ];// = new double[num_samples];
 
 	private byte generated_snd[ ];// = new byte[ 2 * num_samples];
 
+	private boolean running = false;
 
 	public Sine( int in_duration, double in_frequency )
 	{
@@ -53,6 +54,15 @@ public class Sine implements Tone
 	}
 
 
+	@Override
+	public boolean is_running( )
+	{
+		
+		return this.running;
+		
+	}
+	
+	
 	void gen_tone( )
 	{
 		// fill the array
@@ -77,6 +87,7 @@ public class Sine implements Tone
 	{
 		this.audio_track.stop();
 		keep_playing = false;
+		running = false;
 
 	}
 
@@ -97,8 +108,11 @@ public class Sine implements Tone
 		audio_track.setLoopPoints ( 0, generated_snd.length / 4, -1 );
 		audio_track.play();
 
+		running = true;
 
 	}
+	
+	
 	@Override
 	public void create_sound() {
 

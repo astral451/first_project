@@ -6,6 +6,8 @@ package com.mycompany.firstapp.audio;
 public interface Tone {
 
 	public static final int sample_rate = 8000;
+	
+	public boolean is_running( );
 	public void set_freq( double in_freq );
 	public void set_duration( int in_duration );
 	public void create_sound( );
