@@ -26,13 +26,14 @@ public class Sine implements Tone
 	{
 		this.duration = in_duration;
 		this.frequency = in_frequency;
-		create_sound( );
+		//create_sound( );
 
 	}
 
 	private void setup_audio_data( )
 	{
 		this.num_samples = duration * sample_rate;
+		this.num_samples = get_best_num_samples( frequency );
 		this.sample = new double[ num_samples ];
 		this.generated_snd = new byte[ 2 * num_samples ];
 	}
@@ -52,9 +53,27 @@ public class Sine implements Tone
 		create_sound( );
 	}
 
+	// Get the best number of samples based on the frequency
+	// this makes it so the wave form lines up and doesn't clip
+	private int get_best_num_samples( double frequency )
+	{
 
+		long ipart;
+		double fpart;
+
+		ipart = ( long ) frequency;
+		fpart = frequency - ipart;
+
+		double loop_time = this.num_samples / ( double )ipart;
+		double extended_duration = loop_time * fpart;
+
+		double final_samples = this.num_samples + extended_duration;
+		return ( int )final_samples;
+
+	}
 	void gen_tone( )
 	{
+
 		// fill the array
 		for( int i = 0; i < num_samples; ++i )
 		{
@@ -89,12 +108,12 @@ public class Sine implements Tone
 				8000,
 				AudioFormat.CHANNEL_OUT_DEFAULT,
 				AudioFormat.ENCODING_PCM_16BIT,
-				num_samples,
+				8000,
 				AudioTrack.MODE_STATIC
 				);
 		audio_track.write( generated_snd, 0, num_samples );
 		keep_playing = true;
-		audio_track.setLoopPoints ( 0, generated_snd.length / 4, -1 );
+		audio_track.setLoopPoints( 0, generated_snd.length / 2, -1 );
 		audio_track.play();
 
 

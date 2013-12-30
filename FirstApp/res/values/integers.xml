@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="low_freq">220</integer>
+    <integer name="hi_freq">880</integer>
+
+</resources>
